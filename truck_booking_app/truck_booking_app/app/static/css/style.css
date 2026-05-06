@@ -1,0 +1,74 @@
+:root {
+    --soft-bg: #f5f7fa;
+    --card-radius: 22px;
+}
+
+body {
+    background: var(--soft-bg);
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+}
+
+.navbar-brand {
+    letter-spacing: 0.5px;
+}
+
+.hero-section {
+    padding: 50px 0 25px;
+}
+
+.hero-card {
+    background: linear-gradient(135deg, #ffffff, #f1f4f8);
+    padding: 70px 30px;
+    border-radius: 28px;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
+}
+
+.feature-card,
+.form-card,
+.job-card,
+.card {
+    border-radius: var(--card-radius);
+}
+
+.feature-card {
+    background: white;
+    padding: 30px;
+    height: 100%;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+}
+
+.feature-card h4 {
+    font-weight: 700;
+}
+
+.dashboard-card {
+    padding: 30px;
+    border-radius: var(--card-radius);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+}
+
+.dashboard-card h2 {
+    font-size: 42px;
+    font-weight: 800;
+    margin-bottom: 0;
+}
+
+.btn,
+.form-control,
+.form-select {
+    border-radius: 12px;
+}
+
+.form-control,
+.form-select {
+    padding: 12px 14px;
+}
+
+.fare-text {
+    font-size: 18px;
+}
+
+.footer {
+    margin-top: auto;
+}

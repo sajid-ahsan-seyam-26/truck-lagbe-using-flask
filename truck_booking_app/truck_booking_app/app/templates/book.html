@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}Book Truck | TruckBook{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-7">
+        <div class="card shadow-sm border-0 form-card">
+            <div class="card-body p-4 p-md-5">
+                <h2 class="mb-2 fw-bold">Book a Truck</h2>
+                <p class="text-muted mb-4">Fill in the details below to submit your booking request.</p>
+
+                <form method="POST">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Customer Name *</label>
+                            <input type="text" name="customer_name" class="form-control" required>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Phone Number *</label>
+                            <input type="text" name="phone" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Pickup Location *</label>
+                        <input type="text" name="pickup_location" class="form-control" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Drop Location *</label>
+                        <input type="text" name="drop_location" class="form-control" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Truck Type *</label>
+                        <select name="truck_type" class="form-select" required>
+                            <option value="Pickup">Pickup - ৳1200</option>
+                            <option value="Mini Truck">Mini Truck - ৳1800</option>
+                            <option value="Covered Van">Covered Van - ৳2500</option>
+                            <option value="Large Truck">Large Truck - ৳4000</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label">Goods Details</label>
+                        <textarea name="goods_details" class="form-control" rows="4" placeholder="Example: furniture, electronics, rice bags"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-dark btn-lg w-100">Submit Booking Request</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

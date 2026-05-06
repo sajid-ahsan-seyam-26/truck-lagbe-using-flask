@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Home | TruckBook{% endblock %}
+
+{% block content %}
+<section class="hero-section text-center">
+    <div class="hero-card">
+        <span class="badge rounded-pill text-bg-warning mb-3">Fast & Reliable Truck Booking</span>
+        <h1 class="display-5 fw-bold">Move Goods Faster With TruckBook</h1>
+        <p class="lead mt-3 text-muted">
+            Book pickup, mini truck, covered van, or large truck for your delivery needs.
+        </p>
+
+        <div class="mt-4">
+            <a href="{{ url_for('main.book_truck') }}" class="btn btn-dark btn-lg me-2">Book a Truck</a>
+            <a href="{{ url_for('main.jobs') }}" class="btn btn-outline-dark btn-lg">Driver Panel</a>
+        </div>
+    </div>
+</section>
+
+<section class="row g-4 mt-4">
+    <div class="col-md-4">
+        <div class="feature-card">
+            <h4>Easy Booking</h4>
+            <p>Customers can quickly create truck requests with pickup and drop details.</p>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="feature-card">
+            <h4>Driver Jobs</h4>
+            <p>Drivers can see available jobs and accept requests from one dashboard.</p>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="feature-card">
+            <h4>Admin Overview</h4>
+            <p>Track total, pending, and accepted bookings with a clean admin dashboard.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

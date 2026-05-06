@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard | TruckBook{% endblock %}
+
+{% block content %}
+<h2 class="fw-bold mb-4">Admin Dashboard</h2>
+
+<div class="row g-4 mb-4">
+    <div class="col-md-4">
+        <div class="dashboard-card bg-dark text-white">
+            <h5>Total Bookings</h5>
+            <h2>{{ total_bookings }}</h2>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="dashboard-card bg-warning text-dark">
+            <h5>Pending Bookings</h5>
+            <h2>{{ pending_bookings }}</h2>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="dashboard-card bg-success text-white">
+            <h5>Accepted Bookings</h5>
+            <h2>{{ accepted_bookings }}</h2>
+        </div>
+    </div>
+</div>
+
+<div class="card shadow-sm border-0">
+    <div class="card-body p-4">
+        <h4 class="mb-3 fw-bold">Recent Bookings</h4>
+
+        {% if recent_bookings %}
+        <div class="table-responsive">
+            <table class="table table-striped align-middle">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Customer</th>
+                        <th>Truck</th>
+                        <th>Pickup</th>
+                        <th>Drop</th>
+                        <th>Fare</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for booking in recent_bookings %}
+                    <tr>
+                        <td>#{{ booking.id }}</td>
+                        <td>{{ booking.customer_name }}</td>
+                        <td>{{ booking.truck_type }}</td>
+                        <td>{{ booking.pickup_location }}</td>
+                        <td>{{ booking.drop_location }}</td>
+                        <td>৳{{ booking.estimated_fare }}</td>
+                        <td>{{ booking.status }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+            <p class="text-muted">No recent bookings found.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

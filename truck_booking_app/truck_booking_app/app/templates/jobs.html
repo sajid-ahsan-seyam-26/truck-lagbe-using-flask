@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}Driver Jobs | TruckBook{% endblock %}
+
+{% block content %}
+<div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4">
+    <div>
+        <h2 class="fw-bold mb-1">Available Driver Jobs</h2>
+        <p class="text-muted mb-0">Drivers can accept pending booking requests.</p>
+    </div>
+    <a href="{{ url_for('main.book_truck') }}" class="btn btn-dark">New Booking</a>
+</div>
+
+{% if bookings %}
+<div class="row g-4">
+    {% for booking in bookings %}
+    <div class="col-lg-6">
+        <div class="card job-card shadow-sm border-0 h-100">
+            <div class="card-body p-4">
+                <div class="d-flex justify-content-between align-items-start gap-3">
+                    <div>
+                        <h4 class="fw-bold mb-1">{{ booking.truck_type }}</h4>
+                        <small class="text-muted">Booking ID #{{ booking.id }}</small>
+                    </div>
+
+                    {% if booking.status == "Pending" %}
+                        <span class="badge bg-warning text-dark">Pending</span>
+                    {% else %}
+                        <span class="badge bg-success">Accepted</span>
+                    {% endif %}
+                </div>
+
+                <hr>
+
+                <p><strong>Customer:</strong> {{ booking.customer_name }}</p>
+                <p><strong>Phone:</strong> {{ booking.phone }}</p>
+                <p><strong>Pickup:</strong> {{ booking.pickup_location }}</p>
+                <p><strong>Drop:</strong> {{ booking.drop_location }}</p>
+                <p><strong>Goods:</strong> {{ booking.goods_details or "Not provided" }}</p>
+                <p class="fare-text"><strong>Estimated Fare:</strong> ৳{{ booking.estimated_fare }}</p>
+
+                {% if booking.status == "Pending" %}
+                <form method="POST" action="{{ url_for('main.accept_booking', booking_id=booking.id) }}">
+                    <button type="submit" class="btn btn-success w-100">Accept Job</button>
+                </form>
+                {% else %}
+                <button class="btn btn-secondary w-100" disabled>Already Accepted</button>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="alert alert-info">No booking requests available right now.</div>
+{% endif %}
+{% endblock %}
